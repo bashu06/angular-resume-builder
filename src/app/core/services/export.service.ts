@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Resume } from '../models';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+// import * as pdfMake from 'pdfmake/build/pdfmake';
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Document, Packer, Paragraph, TextRun, HeadingLevel } from 'docx';
 
-// Initialize pdfMake fonts
-(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+// Note: pdfMake configuration will be handled differently in production
+// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,12 @@ import { Document, Packer, Paragraph, TextRun, HeadingLevel } from 'docx';
 export class ExportService {
 
   async exportToPdf(resume: Resume): Promise<void> {
-    const docDefinition = this.generatePdfDefinition(resume);
+    // Temporarily disable PDF export due to build issues
+    // const docDefinition = this.generatePdfDefinition(resume);
+    // pdfMake.createPdf(docDefinition).download(`${resume.personalInfo.firstName}_${resume.personalInfo.lastName}_Resume.pdf`);
     
-    pdfMake.createPdf(docDefinition).download(`${resume.personalInfo.firstName}_${resume.personalInfo.lastName}_Resume.pdf`);
+    console.log('PDF export not yet implemented - use DOCX or text export instead');
+    alert('PDF export is temporarily disabled. Please use DOCX or text export instead.');
   }
 
   async exportToDocx(resume: Resume): Promise<void> {
@@ -40,14 +43,14 @@ export class ExportService {
     // Summary
     if (personalInfo.summary) {
       text += 'PROFESSIONAL SUMMARY\n';
-      text += '=' * 50 + '\n';
+      text += '='.repeat(50) + '\n';
       text += `${personalInfo.summary}\n\n`;
     }
 
     // Work Experience
     if (resume.workExperience.length > 0) {
       text += 'WORK EXPERIENCE\n';
-      text += '=' * 50 + '\n';
+      text += '='.repeat(50) + '\n';
       resume.workExperience.forEach(exp => {
         text += `${exp.position} at ${exp.company}\n`;
         text += `${exp.location} | ${this.formatDate(exp.startDate)} - ${exp.endDate ? this.formatDate(exp.endDate) : 'Present'}\n`;
@@ -59,7 +62,7 @@ export class ExportService {
     // Education
     if (resume.education.length > 0) {
       text += 'EDUCATION\n';
-      text += '=' * 50 + '\n';
+      text += '='.repeat(50) + '\n';
       resume.education.forEach(edu => {
         text += `${edu.degree} in ${edu.fieldOfStudy}\n`;
         text += `${edu.institution}, ${edu.location}\n`;
@@ -70,7 +73,7 @@ export class ExportService {
     // Skills
     if (resume.skills.length > 0) {
       text += 'SKILLS\n';
-      text += '=' * 50 + '\n';
+      text += '='.repeat(50) + '\n';
       const skillsByCategory = this.groupSkillsByCategory(resume.skills);
       Object.entries(skillsByCategory).forEach(([category, skills]) => {
         text += `${category}: ${skills.map(s => s.name).join(', ')}\n`;
