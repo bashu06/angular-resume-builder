@@ -1,0 +1,107 @@
+<div class="preview-container">
+  <div class="resume-preview">
+    <!-- Header Section -->
+    <div class="resume-header" *ngIf="personalInfo() as info">
+      <h1 class="name">{{ fullName() }}</h1>
+      <div class="contact-info">
+        <div class="contact-item" *ngIf="info.email">
+          <mat-icon>email</mat-icon>
+          <span>{{ info.email }}</span>
+        </div>
+        <div class="contact-item" *ngIf="info.phone">
+          <mat-icon>phone</mat-icon>
+          <span>{{ info.phone }}</span>
+        </div>
+        <div class="contact-item" *ngIf="info.address || info.city">
+          <mat-icon>location_on</mat-icon>
+          <span>{{ info.address }}, {{ info.city }}, {{ info.state }} {{ info.zipCode }}</span>
+        </div>
+        <div class="contact-item" *ngIf="info.linkedin">
+          <mat-icon>link</mat-icon>
+          <span>{{ info.linkedin }}</span>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Summary Section -->
+    <div class="resume-section" *ngIf="personalInfo()?.summary">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary">{{ personalInfo()?.summary }}</p>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div class="resume-section" *ngIf="workExperience().length > 0">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="experience-item" *ngFor="let exp of workExperience()">
+        <div class="experience-header">
+          <div class="job-title">{{ exp.position }}</div>
+          <div class="date-range">
+            {{ formatDate(exp.startDate) }} - {{ exp.endDate ? formatDate(exp.endDate) : 'Present' }}
+          </div>
+        </div>
+        <div class="company-location">{{ exp.company }}, {{ exp.location }}</div>
+        <ul class="description-list" *ngIf="exp.description.length > 0">
+          <li *ngFor="let desc of exp.description">{{ desc }}</li>
+        </ul>
+        <div class="technologies" *ngIf="exp.technologies && exp.technologies.length > 0">
+          <mat-chip-set>
+            <mat-chip *ngFor="let tech of exp.technologies">{{ tech }}</mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="resume-section" *ngIf="education().length > 0">
+      <h2 class="section-title">Education</h2>
+      <div class="education-item" *ngFor="let edu of education()">
+        <div class="education-header">
+          <div class="degree">{{ edu.degree }} in {{ edu.fieldOfStudy }}</div>
+          <div class="date-range">
+            {{ formatDate(edu.startDate) }} - {{ edu.endDate ? formatDate(edu.endDate) : 'Present' }}
+          </div>
+        </div>
+        <div class="institution">{{ edu.institution }}, {{ edu.location }}</div>
+        <div class="gpa" *ngIf="edu.gpa">GPA: {{ edu.gpa }}</div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="resume-section" *ngIf="skills().length > 0">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category" *ngFor="let category of getSkillCategories()">
+          <h3 class="category-title">{{ category.name }}</h3>
+          <mat-chip-set>
+            <mat-chip *ngFor="let skill of category.skills">
+              {{ skill.name }}
+              <span class="skill-level">({{ skill.level }})</span>
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="resume-section" *ngIf="projects().length > 0">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-item" *ngFor="let project of projects()">
+        <div class="project-header">
+          <div class="project-title">{{ project.name }}</div>
+          <div class="date-range">
+            {{ formatDate(project.startDate) }} - {{ project.endDate ? formatDate(project.endDate) : 'Present' }}
+          </div>
+        </div>
+        <div class="project-role">{{ project.role }}</div>
+        <p class="project-description">{{ project.description }}</p>
+        <div class="technologies" *ngIf="project.technologies.length > 0">
+          <mat-chip-set>
+            <mat-chip *ngFor="let tech of project.technologies">{{ tech }}</mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

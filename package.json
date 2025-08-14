@@ -1,1 +1,49 @@
-{\n  "name": "angular-resume-builder",\n  "version": "0.0.1",\n  "private": true,\n  "scripts": {\n    "ng": "ng",\n    "start": "ng serve",\n    "build": "ng build",\n    "test": "ng test",\n    "lint": "ng lint",\n    "e2e": "ng e2e"\n  },\n  "dependencies": {\n    "@angular/core": "^18.0.0",\n    "@angular/material": "^18.0.0",\n    "@angular/cdk": "^18.0.0",\n    "rxjs": "^7.0.0",\n    "zone.js": "^0.12.0"\n  },\n  "devDependencies": {\n    "@angular/cli": "^18.0.0",\n    "@angular/compiler-cli": "^18.0.0",\n    "typescript": "^5.0.0"\n  }\n}
+{
+  "name": "angular-resume-builder",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.2.0",
+    "@angular/cdk": "^18.2.0",
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "^18.2.0",
+    "@angular/material": "^18.2.0",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/platform-browser-dynamic": "^18.2.0",
+    "@angular/router": "^18.2.0",
+    "@angular/service-worker": "^18.2.0",
+    "dexie": "^4.0.0",
+    "pdfmake": "^0.2.0",
+    "docx": "^8.0.0",
+    "jszip": "^3.10.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.0",
+    "zone.js": "~0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.2.20",
+    "@angular/cli": "^18.2.20",
+    "@angular/compiler-cli": "^18.2.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/pdfmake": "^0.2.0",
+    "jasmine-core": "~5.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.5.2"
+  }
+}

@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <button mat-icon-button (click)="onToggleSidebar()" aria-label="Toggle sidebar">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <span class="app-title">Angular Resume Builder</span>
+  
+  <span class="spacer"></span>
+  
+  <button mat-button [matMenuTriggerFor]="exportMenu" class="export-button">
+    <mat-icon>download</mat-icon>
+    Export
+  </button>
+  
+  <mat-menu #exportMenu="matMenu">
+    <button mat-menu-item (click)="onExportPdf()">
+      <mat-icon>picture_as_pdf</mat-icon>
+      <span>Export as PDF</span>
+    </button>
+    <button mat-menu-item (click)="onExportDocx()">
+      <mat-icon>description</mat-icon>
+      <span>Export as DOCX</span>
+    </button>
+    <button mat-menu-item (click)="onExportText()">
+      <mat-icon>text_snippet</mat-icon>
+      <span>Export as Text</span>
+    </button>
+  </mat-menu>
+  
+  <button mat-icon-button aria-label="Settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>

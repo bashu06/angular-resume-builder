@@ -1,0 +1,28 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+}
+
+.app-sidenav {
+  width: 300px;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .app-sidenav {
+    width: 280px;
+  }
+}

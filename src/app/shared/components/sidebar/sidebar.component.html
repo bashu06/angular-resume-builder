@@ -1,0 +1,24 @@
+<div class="sidebar-content">
+  <div class="sidebar-header">
+    <h2>Resume Sections</h2>
+    <p>Complete each section to build your resume</p>
+  </div>
+  
+  <mat-nav-list class="sidebar-nav">
+    <mat-list-item *ngFor="let section of sections" 
+                   class="nav-item"
+                   [class.completed]="section.completed"
+                   (click)="navigateTo(section.route)">
+      <mat-icon matListIcon>{{ section.icon }}</mat-icon>
+      <span matLine>{{ section.title }}</span>
+      <mat-icon class="completion-icon" *ngIf="section.completed">check_circle</mat-icon>
+    </mat-list-item>
+  </mat-nav-list>
+  
+  <div class="sidebar-footer">
+    <button mat-raised-button color="accent" class="preview-button" (click)="navigateTo('/preview')">
+      <mat-icon>preview</mat-icon>
+      Preview Resume
+    </button>
+  </div>
+</div>

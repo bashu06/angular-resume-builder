@@ -1,0 +1,91 @@
+.editor-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.editor-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skills-form {
+  margin-top: 1rem;
+}
+
+.skill-item {
+  margin-bottom: 1rem;
+}
+
+.skill-card {
+  border: 1px solid #e0e0e0;
+}
+
+.skill-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.skill-name {
+  flex: 2;
+}
+
+.skill-category {
+  flex: 1;
+}
+
+.skill-level {
+  flex: 1;
+}
+
+.skill-years {
+  flex: 0 0 80px;
+}
+
+.skill-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.add-skill-section {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+.add-skill-button {
+  min-width: 150px;
+  height: 48px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .editor-container {
+    padding: 1rem;
+  }
+  
+  .skill-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .skill-name,
+  .skill-category,
+  .skill-level,
+  .skill-years {
+    flex: none;
+    width: 100%;
+  }
+  
+  .skill-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
